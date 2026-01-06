@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Detail</title>
+    <script src="https://kit.fontawesome.com/692189991f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static '../static/room_detail_view.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="content flex_space">
+            <div class="logo">
+                <img src="../static/images/utn.png" alt="">
+            </div>
+            <div class="navlinks">
+                <ul id="menulist">
+                <li><a href="{% url 'app:RoomListView' %}">Inicio</a> </li>
+                <li><a href="#about">Nosotros</a> </li>
+                <li><a href="{% url 'app:BookingListView' %}">Mis Reservas</a> </li>
+                <li><a href="{% url 'app:NewsListView' %}">Noticias</a> </li>
+    
+            <div class="login-var">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'account_logout' %}">Cerrar Sesion</a> </li>
+            {% else %}
+                <li><a href="{% url 'account_login' %}">Inicia Sesion o Registrate</a> </li>
+            </div>
+            {% endif %}
+              <!--<li> <i class="fa fa-search"></i> </li>-->
+              <!--<li> <button class="primary-btn">RESERVÁ AHORA</button> </li>-->
+                </ul>
+                <span class="fa fa-bars" onclick="menutoggle()"></span>
+            </div>
+        </div>
+    </header>   
+    
+    <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+    </script>
+
+
+    <div class="content">
+        
+        {% for room, images in room_images %}
+
+        <!-- Carrusel de imágenes de la habitación -->
+        <div class="owl-carousel owl-theme">
+            {% for image in images %}
+                <div class="item">
+                    <img src="{{ image.image.url }}" alt="Room Image">
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Información de la habitación -->
+        <div class="room">
+            <h1>{{ room_category }}</h1>
+            <h2>{{ room.description }}</h2>
+        </div>
+
+        
+
+        <!-- Formulario de reserva -->
+        <form id="booking-form" action="" method="POST">
+            {% csrf_token %}
+            <div class="input-div">
+                <label for="id_check_in">Ingreso:</label>
+                <input type="datetime-local" id="id_check_in" name="check_in">
+            </div>
+            <div class="input-div">
+                <label for="id_check_out">Salida:</label>
+                <input type="datetime-local" id="id_check_out" name="check_out">
+            </div>
+            
+            {% if not user.is_authenticated %}
+            <script>
+                alert('Por favor, inicia sesión para hacer una reserva.');
+                window.location.href = "{% url 'account_login' %}";
+            </script>
+            {% endif %}
+            <div class="input-div">
+                <button type="submit">Reservar</button>
+            </div>
+        </form>
+
+        <script>
+            // Capturamos el formulario y los campos de entrada
+            const bookingForm = document.getElementById('booking-form');
+            const checkInField = document.getElementById('id_check_in');
+            const checkOutField = document.getElementById('id_check_out');
+        
+            bookingForm.addEventListener('submit', function (event) {
+                // Validamos si los campos están vacíos
+                const checkInValue = checkInField.value;
+                const checkOutValue = checkOutField.value;
+        
+                if (!checkInValue || !checkOutValue) {
+                    event.preventDefault(); // Evitamos el envío del formulario
+                    alert('Por favor, elija las fechas de ingreso y salida.');
+                }
+            });
+        </script>
+
+        {% endfor %}
+    </div>
+
+    <!-- Scripts de Owl Carousel -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                items: 1,
+                navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                
+            });
+        });
+    </script>
+</body>
+</html>

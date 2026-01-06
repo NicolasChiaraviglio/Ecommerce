@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+/* General Styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: 'Poppins', sans-serif;
+}
+  
+.logo img{
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 0px;
+    max-width: 130px;
+    display: flex;
+    gap: 20px;
+    image-resolution: 100px;
+    
+}
+
+  
+a {
+    text-decoration: none;
+}
+  
+li {
+    list-style: none;
+}
+  
+.flex {
+    display: flex;
+}
+
+/*--------header---------*/
+header {
+    height: 10vh;
+    /*line-height: 10vh;*/
+    padding: 0 20px;
+    background-color: #204c98;
+}
+  
+header img {
+    margin: 20px 0;
+}
+  
+header ul li {
+    display: inline-block;
+    text-transform: uppercase;
+}
+  
+header ul li a {
+    color: #fff;
+    margin: 0 10px;
+    transition: 0.5s;
+}
+  
+header ul li a:hover {
+    color: #fbb234;
+}
+  
+header i {
+    margin: 0 20px;
+}
+  
+header button {
+    padding: 13px 40px;
+}
+  
+header .navlinks span {
+    display: none;
+}
+
+.navlinks{
+    justify-content: center;
+    text-align: center;
+    margin-top: -40px;
+    
+}
+  
+.login-var{
+    justify-content: end;
+    text-align: right;
+    margin-top: -22px;
+}
+  
+
+
+/* Header Styles */
+.news-header {
+    background-color: #0033a0;
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.news-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* News Container */
+.news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 0 15px;
+}
+
+/* News Item */
+.news-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* News Image */
+.news-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 2px solid #0033a0;
+}
+
+.news-image .no-image {
+    background-color: #ccc;
+    color: #555;
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+}
+
+/* News Content */
+.news-content {
+    padding: 15px;
+}
+
+.news-content h2 {
+    font-size: 1.5rem;
+    color: #0033a0;
+    margin-bottom: 10px;
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.news-description {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (min-width: 600px) {
+    .news-item {
+        flex-direction: row;
+    }
+
+    .news-image {
+        flex: 1;
+        max-width: 300px;
+    }
+
+    .news-content {
+        flex: 2;
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+
+    body{
+        width: 100%;
+        height: 100%;
+        /*overflow: hidden;*/
+    }
+    
+    
+    .logo img{
+        position: relative;
+        left: 120px;
+        top: 15px;
+    }
+    
+    
+    .login-var{
+        position: relative;
+        top: 350px;
+    }
+    
+
+    header ul {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #204c98;
+        overflow: hidden;
+        transition: max-height 0.5s;
+        z-index: 1000;
+    }
+    
+    header ul li {
+        font-size: 25px;
+        position: relative;
+        margin-bottom: 12px;
+        display: block;
+        text-align: left;
+        justify-content: space-between;
+    }
+    
+    header ul li a {
+        color: white;
+    }
+    
+    header i {
+        color: white;
+    }
+    
+    header .navlinks span {
+        color: white;
+        display: flex;
+        cursor: pointer;
+        margin-bottom: 13px;
+        justify-content: left;
+        font-size: 30px;
+
+    }
+    
+    
+}

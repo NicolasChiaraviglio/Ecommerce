@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Detail</title>
+    <script src="https://kit.fontawesome.com/692189991f.js" crossorigin="anonymous"></script>
+
+    <!-- Main StyleSheet -->
+    <link rel="stylesheet" href="{% static '../static/booking_cancel_view.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Muestra todas las fotos de la pagina-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> 
+
+</head>
+
+<body>
+
+    <header>
+        <div class="content flex_space">
+          <div class="logo">
+            <img src="{% static 'images/utn.png' %}" alt="">
+          </div>
+          <div class="navlinks">
+            <ul id="menulist">
+              <li><a href="{% url 'app:RoomListView' %}">Inicio</a> </li>
+              <li><a href="#about">Nosotros</a> </li>
+              <li><a href="{% url 'app:BookingListView' %}">Mis Reservas</a> </li>
+              <li><a href="{% url 'app:NewsListView' %}">Noticias</a> </li>
+    
+          <div class="login-var">
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'account_logout' %}">Cerrar Sesion</a> </li>
+          {% else %}
+            <li><a href="{% url 'account_login' %}">Inicia Sesion o Registrate</a> </li>
+          </div>
+          {% endif %}
+              <!--<li> <i class="fa fa-search"></i> </li>-->
+              <!--<li> <button class="primary-btn">RESERVÁ AHORA</button> </li>-->
+            </ul>
+            <span class="fa fa-bars" onclick="menutoggle()"></span>
+          </div>
+        </div>
+    </header>
+
+    <script>
+      var menulist = document.getElementById('menulist');
+      menulist.style.maxHeight = "0px";
+  
+      function menutoggle() {
+        if (menulist.style.maxHeight == "0px") {
+          menulist.style.maxHeight = "100vh";
+        } else {
+          menulist.style.maxHeight = "0px";
+        }
+      }
+    </script>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- Room Image -->
+
+        <!-- Room Details -->
+        <div class="room">
+
+        
+            <!-- Div 2: Room Information -->
+            <div class="room-info">
+                <h1>{{room_category}}</h1>
+            </div>
+
+            <!-- Div 3: Room Booking Form -->
+            <form id="booking-form" action="" method="POST">
+
+                {% csrf_token %}
+                <h2>Estas seguro que queres cancelar esta reserva? </h2>
+                <h3>{{booking.get_room_category}} {{booking}}</h3>
+                <!-- Input Div -->
+                <div class="input-div">
+                    <button class="cancel" type="submit">Cancelar reserva</button>
+                </div>
+
+            </form>
+
+        </div> <!-- END Room Div -->
+
+    </div> <!-- END Main Content Div -->
+
+    <!--boton wspp-->
+  <a href="https://wa.me/542604201708" target="_blank" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon" href="/pps/app/static/style.css">
+  </a>
+</body>
+
+</html>

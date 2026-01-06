@@ -1,0 +1,449 @@
+/* Root CSS */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+
+.logo img{
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 0px;
+    max-width: 130px;
+    display: flex;
+    gap: 20px;
+    image-resolution: 100px;
+    
+}
+  
+h1, h2 {
+    font-family: sans-serif;
+    font-weight: 400;
+    text-align: center;
+    justify-content: center;
+}
+  
+a {
+    text-decoration: none;
+}
+  
+li {
+    list-style: none;
+}
+  
+.flex {
+    display: flex;
+}
+  
+  /*.flex_space {
+    display: flex;
+    justify-content: space-between;
+  }*/
+  
+button {
+    border: none;
+    background: none;
+    outline: none;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+
+/*--------header---------*/
+header {
+    height: 10vh;
+    /*line-height: 10vh;*/
+    padding: 0 20px;
+    background-color: #204c98;
+}
+  
+header img {
+    margin: 20px 0;
+}
+  
+  /*header ul {
+    display: block;
+  }*/
+  
+header ul li {
+    display: inline-block;
+    text-transform: uppercase;
+}
+  
+header ul li a {
+    color: #fff;
+    margin: 0 10px;
+    transition: 0.5s;
+}
+  
+header ul li a:hover {
+    color: #fbb234;
+}
+  
+header i {
+    margin: 0 20px;
+}
+  
+header button {
+    padding: 13px 40px;
+}
+  
+header .navlinks span {
+    display: none;
+
+}
+
+.navlinks{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-top: -40px;
+}
+  
+.login-var{
+    justify-content: end;
+    text-align: right;
+    margin-top: -22px;
+}
+  
+
+
+/* Main Divs */
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content: left;
+}
+
+
+.room{
+    position: relative;
+    background-color: lightgrey;
+    border-radius: 8px;
+    width: 58%;
+    left: 30px;
+    height: 400px;
+    top: 80px;
+
+}
+
+.room h1 {
+    text-align: center;
+    color:  #204c98;
+}
+
+.room h2 {
+    font-size: 1.1rem;
+    color: black;
+    text-align: left;
+    margin: 3px;
+}
+
+
+form{
+    position: relative;
+    height: 20%;
+    width: 58%;
+    left: 631px;
+    bottom: -35px;
+    background-color: lightgray;
+    border-radius: 8px;
+}
+
+form button{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    margin-top: 4px;
+}
+/* Sub Divs */
+.home{
+    padding: 7px;
+}
+.fas {
+    color: black;
+}
+
+
+/* Inside Sub Divs */
+
+.image img{
+    flex:1;
+    max-height: 99.2vh;
+}
+
+i{
+    color:#dfdfdf;
+    font-size: 2rem;
+}
+
+/* Form's CSS */
+
+.input-div{
+
+    display: contents;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+input, button{
+    width:300px;
+    border-radius: 0.5rem;
+    line-height: 1.5;
+    font-size: 1.5rem;
+    color: #555;
+    text-align: center;
+}
+
+button{
+    background-color: rgb(6, 137, 245);
+    color:white;
+    /*outline:none;*/
+    text-align: center;
+    
+}
+
+button:hover{
+    color:white;
+    background-color: #204c98;
+}
+
+/* Estilo general del carrusel */
+.owl-carousel {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    left: 10px;
+    max-width: 600px; /* Ancho máximo para el carrusel */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    top: 80px;
+    margin: 1px;
+    /*border: 1px solid red;*/
+}
+
+.item img{
+    background-position: center;
+    background-size: cover;
+    image-resolution: 100%;
+}
+
+
+
+/* Estilo de las flechas de navegación */
+.owl-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.owl-carousel .owl-nav button {
+    background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.owl-carousel .owl-nav button:hover {
+    background: rgba(0, 0, 0, 0.8); /* Más oscuro al pasar el mouse */
+}
+
+.owl-carousel .owl-nav .owl-prev {
+    left: 5px;
+    position: absolute;
+}
+
+.owl-carousel .owl-nav .owl-next {
+    right: 5px;
+    position: absolute;
+}
+
+/* Ocultar puntos de navegación si están activados */
+.owl-carousel .owl-dots {
+    display: none;
+}
+
+
+@media only screen and (max-width:768px) {
+
+    body{
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+    
+    
+    .logo img{
+        position: relative;
+        left: 120px;
+        top: 15px;
+    }
+    
+    
+    .login-var{
+        position: relative;
+        top: 350px;
+    }
+    
+    header ul {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #204c98;
+        overflow: hidden;
+        transition: max-height 0.5s;
+        z-index: 9;
+    }
+    
+    header ul li {
+        font-size: 25px;
+        position: relative;
+        margin-bottom: 12px;
+        display: block;
+        text-align: left;
+        justify-content: space-between;
+    }
+    
+    header ul li a {
+        color: white;
+    }
+    
+    header i {
+        color: white;
+    }
+    
+    header .navlinks span {
+        color: white;
+        display: flex;
+        cursor: pointer;
+        margin-bottom: 13px;
+        justify-content: left;
+        font-size: 30px;
+        
+    }
+
+
+    .owl-carousel {
+        position: relative;
+        margin-right: 20px;
+        margin-top: -60px;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        top: 80px;
+    }
+
+    .owl-carousel .owl-nav button {
+        background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 18px;
+        width: 20px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .item{
+        object-fit: cover;
+        align-items: center;
+        max-width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .item img{
+        max-width: 100%; /* La imagen no sobrepasa el contenedor */
+        max-height: 100%; /* Evita que se salga verticalmente */
+        object-fit: contain; 
+    }
+
+
+    .room{
+        margin: 0;
+        max-width: 350px;
+        position: relative;
+        justify-content: center;
+        text-align: justify;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        height: 600px;
+        
+    }
+    
+    .room h1 {
+        
+        text-align: center;
+        color:  #204c98;
+    }
+    
+    .room h2 {
+        text-align: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        color: black;
+    }
+    
+    .input-div{
+        border: 1px solid;
+    }
+    
+    form{
+        color: white;
+        margin: 10px;
+        text-align: center;
+        position: relative;
+        left: 50px;
+        top: 3px;
+        max-width: 320px;
+        height: auto; /* Ajusta la altura automáticamente */
+        width: 100%; /* Hace el formulario más adaptable */
+        background-color: #3870d1;
+        border-radius: 8px;
+        padding: 10px; /* Añade espacio interno */
+
+    }
+    
+    form button{
+        display: flex;
+        justify-content: center;
+
+    }
+    form label {
+        max-width: 300px;
+    }
+}

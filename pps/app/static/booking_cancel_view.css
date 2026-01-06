@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo img{
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-top: 0px;
+  max-width: 130px;
+  display: flex;
+  gap: 20px;
+  image-resolution: 100px;
+  
+}
+
+h1, h2 {
+  font-family: sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.flex {
+  display: flex;
+}
+
+/*.flex_space {
+  display: flex;
+  justify-content: space-between;
+}*/
+
+button {
+  border: none;
+  background: none;
+  outline: none;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.primary-btn {
+  padding: 15px 40px;
+  background: #204c98;
+  font-weight: bold;
+  color: white;
+}
+
+.secondary-btn {
+  padding: 15px 40px;
+  background: none;
+  border: 2px solid white;
+  font-weight: bold;
+  color: white;
+}
+
+.container {
+  max-width: 85%;
+  margin: auto;
+}
+
+/*--------header---------*/
+header {
+  height: 10vh;
+  /*line-height: 10vh;*/
+  padding: 0 20px;
+  background-color: #204c98;
+}
+
+header img {
+  margin: 20px 0;
+}
+
+/*header ul {
+  display: block;
+}*/
+
+header ul li {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+header ul li a {
+  color: #fff;
+  margin: 0 10px;
+  transition: 0.5s;
+}
+
+header ul li a:hover {
+  color: #fbb234;
+}
+
+header i {
+  margin: 0 20px;
+}
+
+header button {
+  padding: 13px 40px;
+}
+
+header .navlinks span {
+  display: none;
+}
+.navlinks{
+  justify-content: center;
+  text-align: center;
+  margin-top: -40px;
+  
+}
+
+.login-var{
+  justify-content: end;
+  text-align: right;
+  margin-top: -22px;
+}
+
+.room{
+  background-color: antiquewhite;
+  position: relative;
+  top: 100px;
+  left: 300px;
+  width: 60%;
+  height: 300px;
+  border: 4px solid #204c98;
+  border-radius: 8px;
+}
+
+
+.cancel {
+  position: relative;
+  top: 100px;
+  left: 270px;
+  width:300px;
+  border-radius: 0.5rem;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgb(6, 137, 245);
+  outline:none;
+}
+
+.cancel:hover{
+  color:#dfdfdf;
+  background-color: red;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  width: 60px; 
+  height: 60px;
+  background-color: #25d366; 
+  border-radius: 30px; 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-float img {
+  width: 40px;
+  height: 40px;
+}
+
+@media only screen and (max-width:768px) {
+
+  body{
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+  }
+  
+  
+  .logo img{
+      position: relative;
+      left: 120px;
+      top: 15px;
+  }
+  
+  
+  .login-var{
+      position: relative;
+      top: 350px;
+  }
+  
+  header ul {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #204c98;
+      overflow: hidden;
+      transition: max-height 0.5s;
+      z-index: 9;
+  }
+  
+  header ul li {
+      font-size: 25px;
+      position: relative;
+      margin-bottom: 12px;
+      display: block;
+      text-align: left;
+      justify-content: space-between;
+  }
+  
+  header ul li a {
+      color: white;
+  }
+  
+  header i {
+      color: white;
+  }
+  
+  header .navlinks span {
+      color: white;
+      display: flex;
+      cursor: pointer;
+      margin-bottom: 13px;
+      justify-content: left;
+      font-size: 30px;
+      
+  }
+
+  .room {
+    display: flex;
+    flex-direction: column;
+    top: 50px;
+    left: 10px; 
+    width: 95%; 
+    height: 250px; 
+  }
+
+  .room h2 {
+    font-weight: normal;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cancel {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    top: 24px; /* Reduce el margen superior */
+    left: 10px; /* Centra horizontalmente */
+    width: 95%; /* Ajusta el ancho para pantallas pequeñas */
+    font-size: 1.2rem; /* Reduce el tamaño del texto */
+  }
+
+}

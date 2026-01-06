@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias</title>
+    <link rel="stylesheet" href="{% static '../static/news.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyQazABP6yblDQHZpOalU76xkVIO6rS+fjVQa93EIfQfFEIkxokO23V+5OOWvCpPjqHsP1Qi7bmmF4Z3PNTD/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Muestra todas las fotos de la pagina-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> 
+</head>
+<body>
+    
+  <header>
+      <div class="content flex_space">
+        <div class="logo">
+          <img src="../static/images/utn.png" alt="">
+        </div>
+        <div class="navlinks">
+          <ul id="menulist">
+            <li><a href="{% url 'app:RoomListView' %}">Inicio</a> </li>
+            <li><a href="#about">Nosotros</a> </li>
+            <li><a href="{% url 'app:BookingListView' %}">Mis Reservas</a> </li>
+            <li><a href="{% url 'app:NewsListView' %}">Noticias</a> </li>
+
+        <div class="login-var">
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'account_logout' %}">Cerrar Sesion</a> </li>
+        {% else %}
+          <li><a href="{% url 'account_login' %}">Inicia Sesion o Registrate</a> </li>
+        </div>
+        {% endif %}
+            <!--<li> <i class="fa fa-search"></i> </li>-->
+            <!--<li> <button class="primary-btn">RESERVÁ AHORA</button> </li>-->
+          </ul>
+          <span class="fa fa-bars" onclick="menutoggle()"></span>
+        </div>
+      </div>
+  </header>
+  
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>  
+
+
+  <section class="news-container">
+      {% for noticia in noticias %}
+          <article class="news-item">
+              <div class="news-image">
+                  {% if noticia.image %}
+                      <img src="{{ noticia.image.url }}" alt="Image for {{ noticia.title }}">
+                  {% else %}
+                      <p class="no-image">No image available</p>
+                  {% endif %}
+              </div>
+              <div class="news-content">
+                  <h2>{{ noticia.title }}</h2>
+                  <p class="news-date">Published: {{ noticia.created_at|date:"F j, Y" }}</p>
+                  <p class="news-description">{{ noticia.content|truncatewords:30 }}</p>
+              </div>
+          </article>
+      {% endfor %}
+  </section>
+
+  <script src="https://kit.fontawesome.com/032d11eac3.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
